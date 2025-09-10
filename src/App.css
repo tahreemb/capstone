@@ -54,6 +54,41 @@ body {
   border-radius: 8px;
 }
 
+/* === Hamburger Icon === */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* === Responsive Hamburger Menu === */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .nav-list.show-menu {
+    display: flex;
+  }
+
+  .header-button {
+    margin-top: 10px;
+  }
+}
 
 
 /* ===MAIN === */

@@ -3,7 +3,7 @@ import '../App.css';
 
 const Header = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const categories = ['Home', 'About', 'Menu', 'Reservations', 'Order Online', 'Login'];
 
   return (
@@ -12,7 +12,16 @@ const Header = () => {
       <div className="logo">
         <img src="" alt="Logo" className="logo-img" />
       </div>
-        <ul className="nav-list">
+
+      {/* Hamburger Icon */}
+        <div
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </div>
+
+        <ul className={`nav-list ${menuOpen ? 'show-menu' : ''}`}>
           {categories.map((category, index) => (
             <li key={category} className="nav-item">
               <a
