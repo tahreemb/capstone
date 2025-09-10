@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
+//import logo from '.logo.png';
 
 const Header = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const categories = ['Home', 'About', 'Menu', 'Reservations', 'Order Online', 'Login'];
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/'},
+    { name: 'Menu', path: '/'},
+    { name: 'Reservations', path: '/reservations'},
+    { name: 'Order Online', path: '/'},
+    { name: 'Login', path: '/'},
+  ];
 
   return (
     <header className="main-header">
@@ -22,15 +31,15 @@ const Header = () => {
         </div>
 
         <ul className={`nav-list ${menuOpen ? 'show-menu' : ''}`}>
-          {categories.map((category, index) => (
-            <li key={category} className="nav-item">
-              <a
-                href="#"
-                className={`nav-link ${activeIndex === index ? 'active' : ''}`}
-                onClick={() => setActiveIndex(index)}
+          {navItems.map((item) => (
+            <li key={item.name} className="nav-item">
+              <Link
+                to={item.path}
+                className="nav-link"
+                onClick={() => setMenuOpen(false)}
               >
-                {category}
-              </a>
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
