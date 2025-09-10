@@ -20,7 +20,7 @@ const Main = () => {
             {/* Right Side: Image */}
             <div className="landing-image">
             <img
-                src="https://via.placeholder.com/500x300"
+                src=""
                 alt="Landing Visual"
             />
             </div>
