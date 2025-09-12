@@ -4,7 +4,6 @@ import '../App.css';
 //import logo from '.logo.png';
 
 const Header = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const navItems = [
     { name: 'Home', path: '/' },
