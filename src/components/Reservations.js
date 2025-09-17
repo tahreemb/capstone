@@ -1,33 +1,9 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
-const initializeTimes = () => {
-  return [
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00',
-  ];
-};
-
-const updateTimes = (state, action) => {
-  switch (action.type) {
-    case 'UPDATE_TIMES':
-      const selectedDate = action.payload;
-      // Example logic to change times based on date
-      if (selectedDate === '2025-12-25') {
-        return ['17:00', '18:00'];
-      }
-      // default set
-      return initializeTimes();
-    default:
-      return state;
-  }
-};
-
 const Reservations = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -35,30 +11,83 @@ const Reservations = () => {
     occasion: 'Birthday',
   });
 
+const initializeTimes = () => {
+  return [
+  '17:00',
+  '18:00',
+  '19:00',
+  '20:00',
+  '21:00',
+  '22:00',];
+};
+
+const updateTimes = (state, action) => {
+  switch (action.type) {
+    case 'UPDATE_TIMES':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     undefined,
     initializeTimes
   );
 
+  const [bookedSlots, setBookedSlots] = useState(() => {
+    const storedBookings = localStorage.getItem('bookedSlots');
+    return storedBookings ? JSON.parse(storedBookings) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
+  }, [bookedSlots]);
+
+
+  const fetchedTimes = (date) => {
+    const bookedTimes = bookedSlots
+      .filter((slot) => slot.date === date)
+      .map((slot) => slot.time);
+
+    const filteredTimes = availableTimes.filter(
+      (time) => !bookedTimes.includes(time)
+    );
+
+    dispatch({ type: 'UPDATE_TIMES', payload: filteredTimes });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name === 'date') {
-      updateTimes(value);
+      fetchedTimes(value);
     }
 
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Reservation Submitted:', formData);
-    alert('Reservation submitted!');
+    const { date, time } = formData;
+
+    const alreadyBooked = bookedSlots.some(
+      (slot) => slot.date === date && slot.time === time
+    );
+
+    if (alreadyBooked) {
+      alert('This time is already booked!');
+      return;
+    }
+
+    setBookedSlots((prev) => [...prev, { date, time }]);
+    fetchedTimes(date);
+    navigate('/confirmed');
+
   };
 
   return (

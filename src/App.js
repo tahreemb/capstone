@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Reservations from "./components/Reservations";
+import ConfirmedReservation from "./components/ConfirmedReservation";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
        <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/confirmed" element={<ConfirmedReservation />} />
        </Routes>
 
       <Footer />
