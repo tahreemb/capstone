@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 
 const Main = () => {
@@ -14,7 +15,9 @@ const Main = () => {
             <p>
                 We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
             </p>
-            <button className="landing-button">Reserve a Table</button>
+            <Link to="/reservations">
+              <button className="landing-button">Reserve a Table</button>
+            </Link>
             </div>
 
             {/* Right Side: Image */}

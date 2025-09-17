@@ -45,13 +45,14 @@ const updateTimes = (state, action) => {
     localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
   }, [bookedSlots]);
 
+  const initialTimes = initializeTimes();
 
   const fetchedTimes = (date) => {
     const bookedTimes = bookedSlots
       .filter((slot) => slot.date === date)
       .map((slot) => slot.time);
 
-    const filteredTimes = availableTimes.filter(
+    const filteredTimes = initialTimes.filter(
       (time) => !bookedTimes.includes(time)
     );
 
@@ -100,6 +101,7 @@ const updateTimes = (state, action) => {
             type="date"
             id="date"
             name="date"
+            aria-label="Select reservation time"
             value={formData.date}
             onChange={handleChange}
             required
@@ -109,10 +111,13 @@ const updateTimes = (state, action) => {
           <select
             id="time"
             name="time"
+            aria-label="Select reservation time"
             value={formData.time}
             onChange={handleChange}
+            required
           >
-            {availableTimes.map((time) => (
+          <option value="">Select a time</option>
+            {initialTimes.map((time) => (
               <option key={time} value={time}>
                 {time}
               </option>
@@ -124,6 +129,7 @@ const updateTimes = (state, action) => {
             type="number"
             id="guests"
             name="guests"
+            aria-label="Number of guests"
             min="1"
             max="10"
             value={formData.guests}
@@ -135,6 +141,7 @@ const updateTimes = (state, action) => {
           <select
             id="occasion"
             name="occasion"
+            aria-label="Select occasion"
             value={formData.occasion}
             onChange={handleChange}
           >
