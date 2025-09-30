@@ -7,8 +7,8 @@ const Footer = () => {
     <footer className="main-footer">
       <div className="footer-content container">
 
-        <div className="footer-logo">
-          <img src="" alt="Logo" />
+        <div className="logo">
+          <img src="/assets/logo-footer.png" alt="Logo" className="footer-logo"/>
         </div>
 
         <div className="footer-columns">

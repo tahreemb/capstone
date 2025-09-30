@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
-//import logo from '.logo.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +17,7 @@ const Header = () => {
     <header className="main-header">
       <nav className="nav-bar container">
       <div className="logo">
-        <img src="" alt="Logo" className="logo-img" />
+        <img src="/assets/logo-header.png" alt="Logo" className="header-logo" />
       </div>
 
       {/* Hamburger Icon */}

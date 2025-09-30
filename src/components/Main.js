@@ -23,7 +23,7 @@ const Main = () => {
             {/* Right Side: Image */}
             <div className="landing-image">
             <img
-                src=""
+                src="/assets/bruschetta.jpg"
                 alt="Landing Visual"
             />
             </div>
@@ -39,7 +39,7 @@ const Main = () => {
         </div>
         <div className="card-container">
           <div className="card">
-            <img src="" alt="Card 1" className="card-img" />
+            <img src="/assets/greek-salad.jpg" alt="Card 1" className="card-img" />
             <div className="card-header">
                 <h3>Greek salad</h3>
                 <span className="card-extra">$12.99</span>
@@ -47,7 +47,7 @@ const Main = () => {
             <p>The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. </p>
           </div>
           <div className="card">
-            <img src="" alt="Card 2" className="card-img" />
+            <img src="/assets/bruschetta.jpg" alt="Card 2" className="card-img" />
             <div className="card-header">
                 <h3>Bruschetta</h3>
                 <span className="card-extra">$5.99</span>
@@ -55,7 +55,7 @@ const Main = () => {
             <p>Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. </p>
           </div>
           <div className="card">
-            <img src="" alt="Card 3" className="card-img" />
+            <img src="/assets/lemon.png" alt="Card 3" className="card-img-3" />
             <div className="card-header">
                 <h3>Lemon Dessert</h3>
                 <span className="card-extra">$5.00</span>

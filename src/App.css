@@ -22,14 +22,17 @@ body {
   padding: 15px 0;
 }
 
+
 .nav-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
+.header-logo {
   margin-left: 20px;
+  width: 150px;
+  height: auto;
 }
 
 .nav-list {
@@ -112,7 +115,7 @@ body {
 
 /* === Landing Section === */
 .landing-section {
-  padding: 60px 20px;
+  padding: 30px 20px;
   background-color: #495E57;
   color: #EDEFEE;
   border-radius: 10px;
@@ -249,7 +252,13 @@ body {
 .card-img {
   width: 100%;
   height: auto;
-  border-radius: 6px 6px 0 0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-img-3 {
+  height: 175px;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 
@@ -405,9 +414,9 @@ body {
   gap: 40px;
 }
 
-.footer-logo img {
-  width: 120px;
-  height: auto;
+.footer-logo {
+  height: 120px;
+  width: auto;
 }
 
 .footer-columns {
